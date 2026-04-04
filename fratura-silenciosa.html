@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Fratura Silenciosa - MSQT</title>
+  <meta name="description" content="Os 7 sinais estruturais que consomem a margem da sua empresa sem aparecer no financeiro.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,700;1,400&family=Geist+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #09090B;
+      --bg-light:     #FAFAF9;
+      --text:         #FAFAF9;
+      --text-sec:     #A19B96;
+      --text-muted:   #646470;
+      --divider:      #37373F;
+      --text-on-light:     #09090B;
+      --text-sec-light:    #5A5754;
+      --text-muted-light:  #A09B96;
+      --divider-light:     #C8C5C1;
+      --font-display: 'Bricolage Grotesque', sans-serif;
+      --font-body:    'Instrument Sans', sans-serif;
+      --font-mono:    'Geist Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── LAYOUT ─── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 100px 0; }
+    section.light { background: var(--bg-light); color: var(--text-on-light); }
+
+    /* ─── HAIRLINE ─── */
+    .hairline {
+      width: 100%;
+      height: 1px;
+      background: var(--divider);
+    }
+    .hairline.light-line { background: var(--divider-light); }
+    .hairline.short {
+      width: 120px;
+      margin: 32px auto;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      padding: 40px 0 32px;
+      border-bottom: 1px solid var(--divider);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .doc-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* ─── HERO ─── */
+    .hero { padding: 100px 0 80px; }
+    .hero-meta {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 48px;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 10vw, 96px);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 40px;
+    }
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--text-sec);
+      max-width: 560px;
+    }
+
+    /* ─── OPENING ─── */
+    .opening { padding: 0 0 100px; }
+    .opening p {
+      font-size: 19px;
+      line-height: 1.7;
+      color: var(--text-sec);
+      margin-bottom: 24px;
+      max-width: 640px;
+    }
+    .opening p strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+    .callout {
+      border-left: 1px solid var(--divider);
+      padding-left: 28px;
+      margin: 48px 0;
+    }
+    .callout p {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.55;
+      color: var(--text);
+      margin-bottom: 0;
+    }
+
+    /* ─── SIGNALS INTRO ─── */
+    .signals-intro { padding: 80px 0 0; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .section-label.dark { color: var(--text-muted-light); }
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      line-height: 1.0;
+    }
+    .section-title.on-light { color: var(--text-on-light); }
+    .section-title.large { font-size: clamp(36px, 6vw, 56px); }
+    .section-title.medium { font-size: clamp(28px, 4vw, 40px); }
+
+    /* ─── SIGNAL ITEM ─── */
+    .signals-list { padding: 64px 0 100px; }
+    .signal {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--divider);
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .signal:first-child { border-top: 1px solid var(--divider); }
+    .signal.visible { opacity: 1; transform: translateY(0); }
+
+    .signal-number {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .signal-name {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+    .signal-body p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text-sec);
+      margin-bottom: 20px;
+    }
+    .signal-body p strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+    .signal-body p:last-child { margin-bottom: 0; }
+
+    .cost-block {
+      background: #111113;
+      border: 1px solid var(--divider);
+      padding: 24px 28px;
+      margin-top: 32px;
+    }
+    .cost-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .cost-text {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text-sec);
+    }
+    .cost-text strong { color: var(--text); }
+
+    /* ─── LIGHT SECTIONS ─── */
+    .section-body-dark {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-sec);
+      margin-bottom: 24px;
+      max-width: 620px;
+    }
+    .section-body-dark strong { color: var(--text); }
+
+    .section-body-light {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-sec-light);
+      margin-bottom: 24px;
+      max-width: 620px;
+    }
+    .section-body-light strong { color: var(--text-on-light); }
+
+    /* ─── RESULTS GRID ─── */
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--divider-light);
+      margin-top: 56px;
+      border: 1px solid var(--divider-light);
+    }
+    .result-item {
+      background: var(--bg-light);
+      padding: 32px;
+    }
+    .result-item .result-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--text-muted-light);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .result-item .result-text {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-sec-light);
+    }
+    .result-item .result-text strong { color: var(--text-on-light); }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section { padding: 120px 0; }
+    .cta-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 6vw, 60px);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+    .cta-body {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-sec);
+      max-width: 560px;
+      margin-bottom: 56px;
+    }
+    .cta-body strong { color: var(--text); }
+    .cta-button {
+      display: inline-block;
+      background: var(--bg-light);
+      color: var(--bg);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: -0.01em;
+      padding: 20px 44px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: opacity 0.15s ease;
+    }
+    .cta-button:hover { opacity: 0.88; }
+    .cta-note {
+      margin-top: 20px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--divider);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-handle {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+    .footer-right {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 640px) {
+      section { padding: 72px 0; }
+      .hero { padding: 72px 0 56px; }
+      .results-grid { grid-template-columns: 1fr; }
+      .header-inner { flex-direction: column; gap: 8px; align-items: flex-start; }
+      .footer-inner { flex-direction: column; gap: 8px; align-items: flex-start; }
+      .cta-button { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <span class="logo">M &nbsp; S &nbsp; Q &nbsp; T</span>
+        <span class="doc-label">Documento de Diagnóstico</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-meta">DIAGNÓSTICO ESTRUTURAL - 2026</div>
+      <h1 class="hero-title">A Fratura<br>Silenciosa</h1>
+      <div class="hairline short" style="margin: 0 0 40px;"></div>
+      <p class="hero-subtitle">Os 7 sinais estruturais que consomem a margem da sua empresa sem aparecer no financeiro.</p>
+    </div>
+  </section>
+
+  <!-- OPENING -->
+  <section class="opening">
+    <div class="container">
+      <div class="hairline" style="margin-bottom: 64px;"></div>
+      <p>Sua empresa não tem problema de esforço.</p>
+      <p>Você já sabe disso. Trabalha mais do que deveria. Resolve problemas que não deveriam chegar até você. Acompanha tudo de perto porque, se não acompanhar, algo quebra.</p>
+      <p>E mesmo assim, a margem não melhora. O caos não diminui. Os mesmos problemas continuam voltando.</p>
+
+      <div class="callout">
+        <p>"O que ninguém te contou: isso não é consequência de trabalhar pouco. É consequência de uma estrutura que não acompanhou o crescimento."</p>
+      </div>
+
+      <p>Existe um padrão específico de falha que afeta empresas que cresceram rápido. Ele não aparece no financeiro. Não aparece nos relatórios. Mas aparece todos os dias, <strong>na sua operação, no seu tempo, na sua margem.</strong></p>
+      <p>Chamamos isso de <strong>Fratura Silenciosa</strong>.</p>
+      <p>Ela se manifesta em 7 sinais. Quanto mais você reconhecer, mais profunda é a fratura.</p>
+    </div>
+  </section>
+
+  <!-- SIGNALS -->
+  <div style="background: var(--bg);">
+    <div class="container">
+      <div class="section-label" style="padding-top: 0;">Os 7 Sinais</div>
+      <h2 class="section-title large">Reconheça<br>o padrão.</h2>
+    </div>
+
+    <div class="container">
+      <div class="signals-list">
+
+        <!-- SIGNAL 1 -->
+        <div class="signal">
+          <div class="signal-number">01 / 07</div>
+          <h3 class="signal-name">A empresa para<br>quando você para.</h3>
+          <div class="signal-body">
+            <p>Decisões que só você pode tomar. Problemas que só aparecem quando você não está. Uma equipe que funciona com você presente e trava sem você.</p>
+            <p><strong>O diagnóstico:</strong> a empresa não tem processos. Tem memória. A memória está na sua cabeça. Isso não é liderança, é gargalo operacional estrutural.</p>
+            <p>Quando uma empresa depende do fundador para funcionar, ela não é escalável. É frágil. O crescimento cria dependência maior, não menor.</p>
+          </div>
+          <div class="cost-block">
+            <div class="cost-label">Custo Invisível</div>
+            <div class="cost-text">Cada hora que você passa resolvendo o que a equipe deveria resolver é uma hora que não foi investida em crescimento. <strong>Multiplique por dias. Meses. O número é maior do que você imagina.</strong></div>
+          </div>
+        </div>
+
+        <!-- SIGNAL 2 -->
+        <div class="signal">
+          <div class="signal-number">02 / 07</div>
+          <h3 class="signal-name">Faturamento sobe.<br>Margem não.</h3>
+          <div class="signal-body">
+            <p>Mais clientes, mais trabalho, mais pessoas, mais ferramentas. O faturamento cresce. Mas o lucro não acompanha. Às vezes fica igual. Às vezes piora.</p>
+            <p><strong>O diagnóstico:</strong> crescimento sem estrutura amplifica o que já existe. Se a operação tem ineficiências, mais volume significa mais ineficiências. O crescimento não resolve o problema, ele o multiplica.</p>
+            <p>A empresa pode estar faturando mais e lucrando menos. Esse é o pior tipo de crescimento: parece progresso enquanto destrói margem.</p>
+          </div>
+          <div class="cost-block">
+            <div class="cost-label">Custo Invisível</div>
+            <div class="cost-text">O teto de margem não está no mercado. Está na estrutura da operação. <strong>Toda venda realizada sobre uma estrutura ineficiente carrega um custo oculto que não aparece em lugar nenhum, mas reduz seu lucro real.</strong></div>
+          </div>
+        </div>
+
+        <!-- SIGNAL 3 -->
+        <div class="signal">
+          <div class="signal-number">03 / 07</div>
+          <h3 class="signal-name">Cada pessoa faz<br>do seu jeito.</h3>
+          <div class="signal-body">
+            <p>A mesma tarefa executada de formas diferentes por pessoas diferentes. Resultados inconsistentes. Qualidade que depende de quem fez, não de como deve ser feito.</p>
+            <p><strong>O diagnóstico:</strong> processos não documentados. Quando não existe padrão, existe improviso. O improviso gera retrabalho. O retrabalho gera custo invisível e margem destruída.</p>
+            <p>A operação não funciona por sistema. Funciona por improviso individual. Isso é frágil por definição.</p>
+          </div>
+          <div class="cost-block">
+            <div class="cost-label">Custo Invisível</div>
+            <div class="cost-text">Cada retrabalho custa tempo. Tempo da equipe, tempo seu para corrigir, tempo do cliente esperando. <strong>Esse custo não aparece em nenhum relatório, mas consome margem todos os dias da operação.</strong></div>
+          </div>
+        </div>
+
+        <!-- SIGNAL 4 -->
+        <div class="signal">
+          <div class="signal-number">04 / 07</div>
+          <h3 class="signal-name">Os mesmos problemas<br>continuam voltando.</h3>
+          <div class="signal-body">
+            <p>Problemas resolvidos que reaparecem semanas depois. Incêndios apagados que acendem de novo. A sensação de que você está rodando em círculos operacionais.</p>
+            <p><strong>O diagnóstico:</strong> problemas recorrentes são sintomas de ausência de processo. Quando não existe solução sistêmica, o problema volta, porque a causa estrutural nunca foi resolvida. Apenas o sintoma foi tratado.</p>
+            <p>Você resolve. O problema volta. Você resolve de novo. O problema volta de novo. Esse ciclo não é azar. É estrutura.</p>
+          </div>
+          <div class="cost-block">
+            <div class="cost-label">Custo Invisível</div>
+            <div class="cost-text">Cada vez que o mesmo problema volta, você paga o custo de resolvê-lo de novo. <strong>Multiplicado por anos de operação, esse número representa um volume expressivo de recursos desperdiçados em problemas que não deveriam existir.</strong></div>
+          </div>
+        </div>
+
+        <!-- SIGNAL 5 -->
+        <div class="signal">
+          <div class="signal-number">05 / 07</div>
+          <h3 class="signal-name">Mais ferramentas,<br>mais complexidade.</h3>
+          <div class="signal-body">
+            <p>CRM, sistema de gestão, planilhas, WhatsApp Business, plataforma de projetos, mais um sistema novo. A equipe usa tudo parcialmente. Informações espalhadas. Ninguém sabe onde encontrar o quê.</p>
+            <p><strong>O diagnóstico:</strong> ferramentas não resolvem desorganização. Elas amplificam o que já existe. Uma empresa desorganizada com 7 ferramentas não é uma empresa organizada, é uma empresa desorganizada em 7 lugares ao mesmo tempo.</p>
+            <p>O problema raramente é a ferramenta. O problema é o desenho da operação que a ferramenta deveria servir.</p>
+          </div>
+          <div class="cost-block">
+            <div class="cost-label">Custo Invisível</div>
+            <div class="cost-text">Tempo procurando informação. Decisões baseadas em dados errados porque estavam na ferramenta errada. <strong>Ferramentas pagas que ninguém usa completamente. Esse é o custo direto da desorganização digital.</strong></div>
+          </div>
+        </div>
+
+        <!-- SIGNAL 6 -->
+        <div class="signal">
+          <div class="signal-number">06 / 07</div>
+          <h3 class="signal-name">Preço definido<br>no feeling.</h3>
+          <div class="signal-body">
+            <p>Você define preço olhando para o concorrente, para o que o mercado "aceita", ou para o que parece razoável. Descontos para fechar. A sensação constante de que cobra menos do que deveria.</p>
+            <p><strong>O diagnóstico:</strong> preço sem estrutura de custo é preço no escuro. Se você não sabe exatamente quanto custa entregar o que entrega, não sabe se está lucrando ou subsidiando o cliente.</p>
+            <p>Preço baixo raramente é estratégia comercial. É sintoma operacional. Quando a estrutura está errada, o preço paga o preço.</p>
+          </div>
+          <div class="cost-block">
+            <div class="cost-label">Custo Invisível</div>
+            <div class="cost-text">Cada venda pode estar sendo entregue abaixo do custo real. <strong>A empresa cresce em volume e encolhe em margem. O trabalho aumenta. O lucro some. E ninguém percebe porque o faturamento continua crescendo.</strong></div>
+          </div>
+        </div>
+
+        <!-- SIGNAL 7 -->
+        <div class="signal">
+          <div class="signal-number">07 / 07</div>
+          <h3 class="signal-name">Crescimento aumenta<br>o problema.</h3>
+          <div class="signal-body">
+            <p>A empresa está crescendo. Mas a sensação não é de progresso. É de mais caos, mais pressão, mais dependência sua. Mais clientes criaram mais trabalho, não mais liberdade.</p>
+            <p><strong>O diagnóstico:</strong> crescimento sem estrutura não é escala. É amplificação do caos existente. A estrutura que sustentava 10 clientes não sustenta 30. E a que sustenta 30 não sustenta 100.</p>
+            <p>O teto de crescimento está definido pela capacidade da estrutura atual, não pela capacidade do mercado. Você não está limitado pela demanda. Está limitado pela operação.</p>
+          </div>
+          <div class="cost-block">
+            <div class="cost-label">Custo Invisível</div>
+            <div class="cost-text">Cada novo cliente chega sobre uma estrutura que não foi construída para recebê-lo. <strong>O custo de atender cresce mais rápido que a receita. E o crescimento, que deveria ser a solução, vira o problema.</strong></div>
+          </div>
+        </div>
+
+      </div><!-- /signals-list -->
+    </div><!-- /container -->
+  </div>
+
+  <!-- WHAT'S UNDERNEATH - LIGHT -->
+  <section class="light">
+    <div class="container">
+      <div class="section-label dark">A causa comum</div>
+      <h2 class="section-title large on-light" style="margin-bottom: 48px;">Todos esses sinais<br>têm uma origem.</h2>
+
+      <p class="section-body-light">A empresa cresceu. Mas a estrutura operacional não acompanhou esse crescimento.</p>
+      <p class="section-body-light">Processos foram improvisados. Decisões foram centralizadas no dono porque era mais rápido. Ferramentas foram adotadas para resolver problemas pontuais sem um sistema que as conectasse. O resultado foi uma empresa que funciona, <strong>mas que consome mais recurso do que deveria para funcionar.</strong></p>
+      <p class="section-body-light">Isso não é falha de gestão. É o padrão natural de empresas que cresceram sem estrutura. A maioria das empresas que fatura entre R$100k e R$1M por mês está nesse estágio: <strong>faturamento relevante, estrutura frágil.</strong></p>
+      <p class="section-body-light">Não falta esforço. Falta estrutura.</p>
+
+      <div class="hairline light-line" style="margin: 56px 0;"></div>
+
+      <div class="section-label dark" style="margin-bottom: 0; margin-top: 0;">A ampliação do caos</div>
+      <p class="section-body-light" style="margin-top: 24px;">Toda empresa possui um nível de desorganização estrutural. Quando o negócio cresce sem corrigir essa base, o crescimento amplifica os problemas existentes.</p>
+
+      <div style="margin-top: 40px; padding-left: 28px; border-left: 1px solid var(--divider-light);">
+        <p class="section-body-light" style="margin-bottom: 12px;">- Mais clientes geram mais retrabalho.</p>
+        <p class="section-body-light" style="margin-bottom: 12px;">- Mais vendas geram mais gargalos operacionais.</p>
+        <p class="section-body-light" style="margin-bottom: 12px;">- Mais funcionários geram mais dependência de gestão.</p>
+        <p class="section-body-light" style="margin-bottom: 0;">- Mais ferramentas geram mais complexidade.</p>
+      </div>
+
+      <p class="section-body-light" style="margin-top: 40px;"><strong>O empresário acredita que o problema está no crescimento. Na realidade, o problema está na estrutura que sustenta esse crescimento.</strong></p>
+    </div>
+  </section>
+
+  <!-- WHAT CHANGES - DARK -->
+  <section>
+    <div class="container">
+      <div class="section-label">O outro lado</div>
+      <h2 class="section-title large" style="margin-bottom: 48px;">O que muda quando<br>a estrutura está correta.</h2>
+
+      <p class="section-body-dark">Quando a estrutura muda, todo o resto melhora.</p>
+      <p class="section-body-dark">Não como promessa. Como consequência direta de um sistema que passa a funcionar corretamente.</p>
+
+      <div class="results-grid" style="background: var(--divider); border: 1px solid var(--divider);">
+        <div class="result-item" style="background: #111113;">
+          <div class="result-label" style="color: var(--text-muted);">Processos claros</div>
+          <div class="result-text" style="color: var(--text-sec);">Retrabalho cai. <strong style="color: var(--text);">Margem maior com o mesmo faturamento.</strong> O trabalho que antes precisava de 3 pessoas passa a precisar de 1.</div>
+        </div>
+        <div class="result-item" style="background: #111113;">
+          <div class="result-label" style="color: var(--text-muted);">Decisões descentralizadas</div>
+          <div class="result-text" style="color: var(--text-sec);">Equipe mais autônoma. <strong style="color: var(--text);">Dono com mais tempo estratégico.</strong> A empresa funciona quando você não está.</div>
+        </div>
+        <div class="result-item" style="background: #111113;">
+          <div class="result-label" style="color: var(--text-muted);">Ferramentas conectadas</div>
+          <div class="result-text" style="color: var(--text-sec);">Informação confiável. <strong style="color: var(--text);">Decisões melhores.</strong> Menos tempo procurando dados. Mais tempo usando dados.</div>
+        </div>
+        <div class="result-item" style="background: #111113;">
+          <div class="result-label" style="color: var(--text-muted);">Custo real visível</div>
+          <div class="result-text" style="color: var(--text-sec);">Precificação correta. <strong style="color: var(--text);">Margem crescente.</strong> Cada venda gera o lucro que deveria gerar, não o que parece razoável.</div>
+        </div>
+      </div>
+
+      <p class="section-body-dark" style="margin-top: 56px;">A empresa deixa de depender do esforço constante do dono. <strong>Ela passa a operar como um sistema.</strong></p>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <div style="border-top: 1px solid var(--divider);">
+    <div class="container">
+      <div class="cta-section">
+        <div class="cta-label">O próximo passo</div>
+        <h2 class="cta-title">Seu diagnóstico<br>estrutural gratuito.</h2>
+        <p class="cta-body">A MSQT faz diagnósticos estruturais gratuitos para empresas que reconhecem esses sinais. Em minutos, você recebe um mapa dos seus problemas estruturais reais, não uma apresentação comercial, não uma proposta genérica.</p>
+        <p class="cta-body"><strong>Um diagnóstico que revela onde está a fratura. E o que precisa mudar.</strong></p>
+        <a href="https://diagnostico.msqt.com.br" class="cta-button">Quero meu diagnóstico gratuito →</a>
+        <p class="cta-note">Gratuito. Sem compromisso. Resultado em minutos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-handle">@murilo.msqt</span>
+        <span class="footer-right">diagnostico.msqt.com.br</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal for signals
+    const signals = document.querySelectorAll('.signal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    signals.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
